@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Login from "@/features/auth/Login/Login";
 import Register from "@/features/auth/Register/Register";
+import HowItWorksModal from "./HowItWorksModal";
 import classes from "./Landing.module.css";
 
 const Landing = () => {
 const [isLogin, setIsLogin] = useState(true);
+  const [showHowItWorks, setShowHowItWorks] = useState(false);
   // Function to switch between Login and Register views
   const toggleAuth = () => {
     setIsLogin((prev) => !prev);
@@ -82,18 +84,19 @@ const [isLogin, setIsLogin] = useState(true);
               network here.
             </p>
           </div>
-          <button className={classes.how_it_works_btn}>
-            {" "}
-            <a
-              href="https://www.evangadi.com/how-it-works/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              HOW IT WORKS
-            </a>
+          <button
+            className={classes.how_it_works_btn}
+            onClick={() => setShowHowItWorks(true)}
+          >
+            HOW IT WORKS
           </button>
         </div>
       </div>
+
+      {/* POPUP MODAL */}
+      {showHowItWorks && (
+        <HowItWorksModal onClose={() => setShowHowItWorks(false)} />
+      )}
     </section>
   );
 };
