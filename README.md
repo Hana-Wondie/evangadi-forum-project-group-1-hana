@@ -14,14 +14,14 @@ The Evangadi Forum project aims to create a Q&A platform for Evangadi Networks, 
 | Student       | Backend Task                                    | Frontend Task                               |
 |---------------|-------------------------------------------------|---------------------------------------------|
 | Birhanu W     | Set up the MySQL database and table schema      | Create the Sign-up component                |
-| Eyerusalem T  | Document the APIs for authentication and Q&A    | Develop the Login component               |
-| Hana W        | Implement authentication middleware             | Build the Header component                   |
-| Mikiyas T     | Create the Sign-up API endpoint                 | Design the Questions Page                    |
+| Eyerusalem T  | Document the APIs for authentication and Q&A    | Develop the Login component                 |
+| Hana W        | Implement authentication middleware             | Build the Header component                  |
+| Mikiyas T     | Create the Sign-up API endpoint                 | Implement Footer and Header                 |
 | Robel B       | Develop the Login API endpoint                  | Implement the Question and Answers Page     |
-| Samuel M      | Implement CRUD operations for questions         | Create the Ask a Question page               |
+| Samuel M      | Implement CRUD operations for questions         | Create the Ask a Question page              |
 | Seblewongel A | Implement CRUD operations for answers           | Style the application using CSS               
 | Tsega T       | Set up error handling and testing               | Integrate the frontend with backend APIs     |
-| Yitawek M     | Optimize database schema for performance        | Implement responsive design features         |
+| Yitawek M     | Impleement PostAnswer endpoint                  | Implement AnswerFrom{PostAnswer}         |
 | Yoseph G      | Write unit tests for backend features           | Conduct usability testing on the frontend    |
 | Zac A         | Ensure security measures are in place           | Perform analytics and gather user feedback   | 
 
