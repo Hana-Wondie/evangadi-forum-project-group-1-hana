@@ -1,15 +1,12 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { CircleUser, ChevronRight, Edit2, Trash2 } from "lucide-react";
-import {
-  getAllQuestions,
-  updateQuestion,
-  deleteQuestion,
-} from "../questionService";
+import { Link } from "react-router-dom";
+import { CircleUser } from "lucide-react";
+import { getAllQuestions } from "../questionService";
 import classes from "./QuestionList.module.css";
 import { useAuth } from "../../../context/AuthContext";
 
-function QuestionList({ searchTerm, onEdit, onDelete }) {
+function QuestionList({ searchTerm }) {
+  
   const [question, setQuestion] = useState([]);
   const [Loader, setLoader] = useState(true);
 
@@ -46,7 +43,7 @@ function QuestionList({ searchTerm, onEdit, onDelete }) {
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const PAGE_SIZE = 5;
+  const PAGE_SIZE = 7;
 
   const totalPages = Math.max(
     1,
@@ -62,35 +59,6 @@ function QuestionList({ searchTerm, onEdit, onDelete }) {
     const start = (currentPage - 1) * PAGE_SIZE;
     return filteredQuestions.slice(start, start + PAGE_SIZE);
   }, [filteredQuestions, currentPage]);
-
-  const { user } = useAuth();
-  const currentUserId = user?.userid || user?.userid || null;
-
-  // default handlers if parent doesn't provide them
-  const navigate = useNavigate();
-
-  const handleEdit = (q) => {
-    // navigate to Ask page with state so the form loads in edit mode
-    navigate("/ask", { state: { edit: true, question: q } });
-  };
-
-  const handleDelete = async (q) => {
-    try {
-      if (!confirm("Delete this question? This cannot be undone.")) return;
-      await deleteQuestion(q.questionid || q.id);
-      setQuestion((prev) =>
-        prev.filter((item) => item.questionid !== (q.questionid || q.id))
-      );
-    } catch (err) {
-      console.error("Delete failed - full error:", err);
-      const status = err.response?.status;
-      const serverMsg = err.response?.data?.msg || err.response?.data || null;
-      const message = serverMsg
-        ? `${serverMsg} ${status ? `(status ${status})` : ""}`.trim()
-        : err.message || "Failed to delete question.";
-      alert(message);
-    }
-  };
 
   const changePage = (p) =>
     setCurrentPage(Math.min(Math.max(1, p), totalPages));
@@ -117,77 +85,52 @@ function QuestionList({ searchTerm, onEdit, onDelete }) {
         <p className={classes.no_data}>No Questions match your search.</p>
       ) : (
         // to map over paged (filtered) questions
-        pagedQuestions.map((q) => {
-          const ownerId = q.userid || q.userId || q.user_id || null;
-          const isOwner = !!(
-            user &&
-            (ownerId ? ownerId === currentUserId : user.username === q.username)
-          );
-
-          return (
-            <Link
-              key={q.questionid || q.id}
-              to={`/question/${q.questionid || q.id}`}
-              className={classes.question_item}
-            >
-              {/* Left: Avatar + Username */}
-              <div className={classes.user_info}>
-                <div className={classes.avatar}>
-                  <CircleUser size={40} strokeWidth={1.5} color="#d6671d" />
-                </div>
-
-                <p className={classes.user_name}>{q.username}</p>
-              </div>
-              {/* Middle: Question Content + Meta */}
-              <div className={classes.question_content}>
-                <p className={classes.question_title}>{q.title}</p>
-                <p className={classes.question_meta}>
-                  Asked by {q.username}
-                  {q.createdAt
-                    ? ` • ${new Date(q.createdAt).toLocaleDateString()}`
-                    : ""}
-                </p>
-              </div>
-              {/* Right: Arrow */}
-
-              <div className={classes.action_group}>
-                {isOwner && (
-                  <>
-                    <button
-                      className={classes.icon_btn}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        if (typeof onEdit === "function") onEdit(q);
-                        else handleEdit(q);
-                      }}
-                      title="Edit question"
-                    >
-                      <Edit2 size={16} />
-                    </button>
-
-                    <button
-                      className={classes.icon_btn_danger}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        if (typeof onDelete === "function") onDelete(q);
-                        else handleDelete(q);
-                      }}
-                      title="Delete question"
-                    >
-                      <Trash2 size={16} />
-                    </button>
-                  </>
-                )}
-
-                <div className={classes.arrow_circle}>
-                  <ChevronRight size={20} strokeWidth={2} color="#fff" />
-                </div>
+        pagedQuestions.map((q) => (
+          <Link
+            key={q.questionid || q.id}
+            to={`/question/${q.questionid || q.id}`}
+            className={classes.question_item}
+          >
+            {/* Left: Avatar + Username */}
+            <div className={classes.user_info}>
+              <div className={classes.avatar}>
+                <CircleUser size={40} strokeWidth={1.5} color="#d6671d" />
               </div>
             </Link>
           );
         })
+      )}
+
+      {/* Pagination UI */}
+      {totalPages > 1 && (
+        <div className={classes.pagination}>
+          <button
+            className={classes.page_btn}
+            onClick={() => changePage(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Prev
+          </button>
+
+              <p className={classes.user_name}>{q.username}</p>
+            </div>
+            {/* Middle: Question Content + Meta */}
+            <div className={classes.question_content}>
+              <p className={classes.question_title}>{q.title}</p>
+              <p className={classes.question_meta}>
+                Asked by {q.username}
+                {q.createdAt
+                  ? ` • ${new Date(q.createdAt).toLocaleDateString()}`
+                  : ""}
+              </p>
+            </div>
+            {/* Right: Arrow */}
+
+            <div className={classes.arrow_circle}>
+              <ChevronRight size={20} strokeWidth={2} color="#fff" />
+            </div>
+          </Link>
+        ))
       )}
 
       {/* Pagination UI */}
