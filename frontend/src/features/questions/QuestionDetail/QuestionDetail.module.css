@@ -4,7 +4,7 @@
   background: linear-gradient(to bottom, #f0f4f8, #ffffff);
   min-height: 80vh;
   padding: 50px 0;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .inner_container {
@@ -14,25 +14,24 @@
   padding: 40px 30px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s;
+  transition: transform 0.3s ease;
 }
+
 .inner_container:hover {
   transform: translateY(-2px);
 }
 
-
-
 /* ===== Question Header ===== */
 .header_container {
   margin-bottom: 40px;
-  padding: 40px 30px; 
+  padding: 40px 30px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #06549c, #042150); 
+  background: linear-gradient(135deg, #06549c, #042150);
   color: #ffffff;
   display: flex;
   flex-direction: column;
-  align-items: center; 
-  text-align: center; 
+  align-items: center;
+  text-align: center;
   position: relative;
 }
 
@@ -51,6 +50,7 @@
   transition: all 0.2s ease;
   margin-bottom: 25px;
 }
+
 .back_button:hover {
   background: rgba(255, 255, 255, 0.25);
   transform: translateY(-1px);
@@ -60,277 +60,19 @@
   font-size: 32px;
   font-weight: 800;
   color: #ffffff;
-  display: flex;
-  align-items: center;
-  gap: 10px;
   margin-bottom: 10px;
 }
 
-.title_icon {
-  color: #ffdd57; 
-}
-
 .description {
-  margin-top: 10px;
-  color: #d1d5db; 
   font-size: 16px;
+  color: #d1d5db;
   line-height: 1.6;
-  font-style: normal;
-  max-width: 700px; 
+  max-width: 700px;
 }
 
 .question_date {
-  display: inline-block;
-  margin-top: 12px;
   font-size: 13px;
-  color: #cbd5f5; 
-  font-style: italic;
-}
-
-.divider {
-  margin-top: 25px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  width: 60%; 
-}
-
-/* Answers */
-.answers_section {
-  margin-top: 40px;
-}
-.answers_header_group {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-.answers_header_group h2 {
-  font-size: 22px;
-  color: #1f2937;
-  margin: 0;
-}
-.answer_count {
-  background-color: #fe8402;
-  color: #fff;
-  padding: 2px 10px;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 14px;
-}
-
-.answer_list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.answer_item {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-  border-radius: 12px;
-  background-color: #f9fafb;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.answer_item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-}
-.user_info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 120px;
-}
-.avatar {
-  background-color: #e0e7ff;
-  padding: 12px;
-  border-radius: 50%;
-  color: #2563eb;
-  margin-bottom: 6px;
-}
-.user_name {
-  font-size: 14px;
-  font-weight: 500;
-  color: #333;
-}
-.time_stamp {
-  font-size: 12px;
-  color: #777;
-  margin-top: 4px;
-}
-.answer_text p {
-  font-size: 16px;
-  color: #444;
-  line-height: 1.7;
-}
-
-/* Post Answer Form */
-.post_answer_section {
-  margin-top: 50px;
-  background-color: #f3f4f6;
-  padding: 30px;
-  border-radius: 12px;
-}
-.form_header {
-  text-align: center;
-  margin-bottom: 25px;
-}
-.form_header h3 {
-  font-size: 22px;
-  color: #1f2937;
-  font-weight: 600;
-}
-.answer_form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.answer_form textarea {
-  width: 100%;
-  padding: 18px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
-  transition: all 0.3s;
-}
-.answer_form textarea:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 8px rgba(37, 99, 235, 0.2);
-  outline: none;
-}
-.submit_btn {
-  width: fit-content;
-  padding: 14px 40px;
-  background: linear-gradient(90deg, #2563eb, #3b82f6);
-  color: white;
-  font-weight: 600;
-  font-size: 15px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.submit_btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
-}
-.no_answer {
-  font-style: italic;
-  color: #888;
-  padding: 20px 0;
-  text-align: center;
-}
-/* ===== QUESTION HERO HEADER ===== */
-.qhero {
-  position: relative;
-  padding: 45px 40px;
-  border-radius: 24px;
-  background: linear-gradient(135deg, #06549c, #042150);
-  color: #ffffff;
-  margin-bottom: 60px;
-  overflow: hidden;
-}
-
-/* soft glow */
-.qhero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at top left,
-    rgba(59, 130, 246, 0.35),
-    transparent 60%
-  );
-  pointer-events: none;
-}
-
-/* back button */
-.qhero_back {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(7, 4, 4, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #e5e7eb;
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 14px;
-  cursor: pointer;
-  margin-bottom: 25px;
-  transition: all 0.25s ease;
-}
-
-.qhero_back:hover {
-  background: rgba(255, 255, 255, 0.18);
-  transform: translateY(-1px);
-}
-
-/* content */
-.qhero_content {
-  max-width: 850px;
-}
-
-.qhero_title {
-  font-size: 34px;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 18px;
-  letter-spacing: -0.5px;
-}
-
-/* description */
-.qhero_description {
-  font-size: 17px;
-  line-height: 1.7;
-  color: #d1d5db;
-  margin-bottom: 30px;
-}
-
-/* meta info */
-.qhero_meta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 8px 16px;
-  border-radius: 14px;
-  font-size: 14px;
-}
-
-.qhero_meta span {
   color: #cbd5f5;
-}
-
-.qhero_meta strong {
-  color: #ffffff;
-  font-weight: 600;
-}
-/* AI Summary Styling */
-.ai_button {
-  background-color: #fe8402;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-  margin: 20px 0;
-}
-
-.ai_summary_box {
-  background: linear-gradient(to right, #f8faff, #ffffff);
-  border: 1px solid #e0e7ff;
-  border-left: 5px solid #516cf0;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.ai_summary_box h3 {
-  margin: 0 0 10px 0;
-  color: #516cf0;
-  font-size: 1.1rem;
-}
-
-.summary_content {
-  white-space: pre-wrap;
-  color: #334155;
+  font-style: italic;
+  margin-top: 10px;
 }

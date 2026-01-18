@@ -1,29 +1,184 @@
-.answers_container {
-  margin-top: 20px;
+/* ===== Answers Section ===== */
+.answersSection {
+  margin-top: 40px;
+  font-family: 'Inter', sans-serif;
 }
 
-
-.answer_card {
-  padding: 12px 0;
-  border-bottom: 1px solid #ddd;
+/* ===== AI Summary Button ===== */
+.aiButton {
+  background-color: #fe8402;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.2s ease;
+}
+.aiButton:hover:not(:disabled) {
+  background-color: #ff9500;
+}
+.aiButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-.user_info {
+/* ===== AI Summary Box ===== */
+.aiSummaryBox {
+  background: linear-gradient(to right, #f8faff, #ffffff);
+  border: 1px solid #e0e7ff;
+  border-left: 5px solid #516cf0;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.aiSummaryBox h3 {
+  margin: 0 0 10px 0;
+  color: #516cf0;
+  font-size: 1.1rem;
+}
+.aiSummaryBox p {
+  color: #334155;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+/* ===== Answer List ===== */
+.answerList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ===== Answer Card ===== */
+.answerCard {
+  background-color: #f9fafb;
+  border-radius: 12px;
+  padding: 18px 22px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+.answerCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+}
+
+/* ===== User Info ===== */
+.userInfo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 6px;
+  gap: 12px;
+  margin-bottom: 10px;
 }
 
 .avatar {
-  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e0e7ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2563eb;
 }
 
-.username {
+.userDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.user {
+  font-weight: 600;
+  font-size: 14px;
+  color: #111827;
+}
+
+.date {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* ===== Answer Text ===== */
+.answerText {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #374151;
+}
+
+/* ===== Post Answer Section ===== */
+.postAnswerSection {
+  margin-top: 50px;
+  background-color: #f3f4f6;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.formHeader {
+  text-align: center;
+  margin-bottom: 25px;
+}
+.formHeader h3 {
+  font-size: 22px;
+  color: #1f2937;
   font-weight: 600;
 }
 
-.answer_text {
+/* ===== Answer Form ===== */
+.answerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.answerForm textarea {
+  width: 100%;
+  padding: 18px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  transition: all 0.3s;
+}
+.answerForm textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.2);
+  outline: none;
+}
+
+.submitBtn {
+  width: fit-content;
+  padding: 14px 40px;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  color: white;
+  font-weight: 600;
   font-size: 15px;
-  line-height: 1.5;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* ===== Empty State ===== */
+.noAnswer {
+  font-style: italic;
+  color: #888;
+  padding: 20px 0;
+  text-align: center;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .userInfo {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .answerCard {
+    flex-direction: column;
+  }
 }
