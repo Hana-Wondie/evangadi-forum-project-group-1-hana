@@ -2,6 +2,7 @@ const dbConnection = require("../config/dbConfig");
 // dbConnection => mysql database connection (used to run sql quieries like select , insert)
 const bcrypt = require("bcrypt");
 // hashed password securely and Prevents storing plain-text passwords in the database
+const nodemailer = require("nodemailer");
 
 const { StatusCodes } = require("http-status-codes");
 // Gives readable HTTP status codes forex. For OK its 200, for BAD_REQUEST  400, for Unauthorised its 401, etc.)
